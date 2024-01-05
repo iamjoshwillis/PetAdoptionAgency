@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Josh's Pet Adoption Agency</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Edit Pet: {{pet.name}}</h1>
+    <p>
+
+            Name: {{pet.name}}<br>
+            Species: {{pet.species}}<br>
+            {% if pet.photo_url %}
+            <img src="{{pet.photo_url}}" alt="{{pet.name}}" width="300" height="300"><br>
+            {% endif %}
+            {% if pet.age %}
+            Age: {{pet.age}}
+            {% endif %}
+    
+    </p>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+        <p>
+        <div class="form-group">
+            {{field.label}}
+            {{field(class_="form-control")}}
+        </p>
+        {% endfor %}
+        </div>
+    <button class="btn btn-success">Submit</button>
+    <a href="/" class="btn btn-danger">Cancel</a>
+    </form>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Josh's Pet Adoption Agency</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Josh's Pet Adoption Agency</h1>
+        <div class="container">
+        {% for pet in pets %}
+        <p>
+            <img src="{{pet.photo_url}}" alt="{{pet.name}}" width="300" height="300"><br>
+            {{pet.name}} {% if pet.available %} is <b>available</b> {% else %}{% endif %}<br>
+            <a href="/{{pet.id}}">Edit</a>
+        </p>
+        {% endfor %}
+        </div>
+    <a href="/add" class="btn btn-success">Add New Pet</a>
+    </div>
+</body>
+</html>
